@@ -74,9 +74,13 @@
     <Content Include="冯.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analyzer.ashx.cs">
+      <DependentUpon>Analyzer.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analyzer.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
