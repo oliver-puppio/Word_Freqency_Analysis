@@ -45,8 +45,8 @@ namespace Word词频分析
 
                 //处理词频
                 var segmenter = new JiebaSegmenter();                
-                var segments2 = segmenter.Cut(str);
-                context.Response.Write(segments2);
+                var segments = segmenter.Cut(str);
+                context.Response.Write(string.Join("/ ", segments));
             }
 
             else
