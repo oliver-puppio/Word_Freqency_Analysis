@@ -46,13 +46,31 @@ namespace Word词频分析
                 //处理词频
                 var segmenter = new JiebaSegmenter();                
                 var segments = segmenter.Cut(str);
-                var freqs = new Counter<string>(segmenter.Cut(str));
-                string json="";
-                foreach (var pair in freqs.MostCommon(5))
+
+                Dictionary<string, int> dic = new Dictionary<string, int>();
+                //遍历segments列表
+                for (int i = 0; i < segments.Count(); i++)
                 {
-                    json+="'{pair.Key}': '{pair.Value}';";
+                    var tmpstr = segments.ElementAt(i);
+                    if (!dic.ContainsKey(tmpstr))
+                    {
+                        dic.Add(tmpstr, 1);
+                    }
+                    else
+                    {
+                        dic[tmpstr]++;
+                    }
                 }
-                context.Response.Write(json);
+
+
+                //字典类型用上面的方法遍历访问key和value。
+                string wnf = "{";
+                foreach (KeyValuePair<string, int> kvp in dic)
+                {
+                    wnf += "'" + kvp.Key + "':" + kvp.Value + ";";
+                }
+                wnf += "}";
+                context.Response.Write(wnf);
             }
 
             else
@@ -68,50 +86,6 @@ namespace Word词频分析
             }
         }
 
-        static void Test_Main(string[] args)
-        {
-            var segmenter = new JiebaSegmenter();
-            //var segments2 = segmenter.Cut("我来到北京清华大学我来到北京北京清华大学");
-            //获取待分析的text字符串
-            string text = "我来到北京清华大学我来到北京北京清华大学";
-            //分词
-            var segments2 = segmenter.Cut(text);
-            Console.WriteLine("【精确模式】：{0}", string.Join("/ ", segments2));
-
-            Dictionary<string, int> dic = new Dictionary<string, int>();
-            //遍历segments列表
-            for (int i = 0; i < segments2.Count(); i++)
-            {
-                var tmpstr = segments2.ElementAt(i);
-                if (!dic.ContainsKey(tmpstr))
-                {
-                    dic.Add(tmpstr, 1);
-                }
-                else
-                {
-                    dic[tmpstr]++;
-                }
-            }
-
-            //Console.WriteLine("dic是：{");
-            ////遍历字典            
-            //foreach(KeyValuePair<string,int> kvp in dic)
-            //{
-            //    Console.WriteLine(kvp.Key + ":" + kvp.Value);
-            //}
-            //Console.WriteLine("}");
-
-            //字典类型用上面的方法遍历访问key和value。
-            string wnf = "{";
-            foreach (KeyValuePair<string, int> kvp in dic)
-            {
-                wnf += kvp.Key + ":" + kvp.Value + ";";
-            }
-            wnf += "}";
-            Console.WriteLine(wnf);
-
-            Console.ReadLine();
-        }
     }
 }
 

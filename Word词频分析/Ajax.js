@@ -56,5 +56,6 @@ function Upload() {
     var data = new FormData();
     data.append('Doc_Upload', files[0]);
 
-    Ajax("post", "Analyzer.ashx.cs",data,show_in_div);
+    Ajax("post", "Analyzer.ashx.cs", data, function (param)
+    { document.getElementById('div1').innerText = " <div id='div1'>" + param + "</div>" });
 }
