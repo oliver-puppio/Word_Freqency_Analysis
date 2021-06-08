@@ -8,6 +8,7 @@ using Spire.Doc;
 using Spire.Doc.Documents;
 using System.Threading.Tasks;
 using JiebaNet.Segmenter;
+using System.Collections;
 
 namespace Word词频分析
 {
@@ -25,10 +26,10 @@ namespace Word词频分析
                 context.Response.ContentType = "text/plain";             
                 //HttpPostedFile f = context.Request.Files[0];
                 HttpPostedFile f = HttpContext.Current.Request.Files[0];
-                f.SaveAs(HttpContext.Current.Server.MapPath("Library/" + f.FileName));
+                f.SaveAs(HttpContext.Current.Server.MapPath("~/Library/" + f.FileName));
                 string path = HttpContext.Current.Server.MapPath("~/Library/") +f.FileName;
 
-                //读取word文件
+                //读取word文件并提取文本内容到temp.txt中
                 Document doc = new Document();
                 doc.LoadFromFile(path);
                 string s = doc.GetText();
@@ -47,8 +48,8 @@ namespace Word词频分析
                 var segmenter = new JiebaSegmenter();                
                 var segments = segmenter.Cut(str);
 
-                Dictionary<string, int> dic = new Dictionary<string, int>();
-                //遍历segments列表
+                //建立存储词频的字典
+                Dictionary<string, int> dic = new Dictionary<string, int>();        
                 for (int i = 0; i < segments.Count(); i++)
                 {
                     var tmpstr = segments.ElementAt(i);
@@ -61,8 +62,16 @@ namespace Word词频分析
                         dic[tmpstr]++;
                     }
                 }
-
-
+                
+                //从已有数据中剔除禁用词
+                string[] stopwords = File.ReadAllLines(HttpContext.Current.Server.MapPath("stopwords.txt"));
+                foreach (var item in dic.ToList())
+                {
+                    if (item.Value == 1 || stopwords.Contains(item.Key))
+                    {
+                        dic.Remove(item.Key);
+                    }
+                }
                 //字典类型用上面的方法遍历访问key和value。
                 string wnf = "{";
                 foreach (KeyValuePair<string, int> kvp in dic)
