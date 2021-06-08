@@ -1,2 +1,29 @@
 ﻿body {
 }
+
+.file {
+    position: relative;
+    background-color: #b32b1b;
+    border: 1px solid #ddd;
+    width: 68px;
+    height: 25px;
+    display: inline-block;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 25px;
+    font-size: 14px;
+    color: #fff;
+    margin: 0 auto;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+}
+
+    .file input {
+        position: absolute;
+        top: 0;
+        left: -2px;
+        opacity: 0;
+        width: 10px;
+    }
