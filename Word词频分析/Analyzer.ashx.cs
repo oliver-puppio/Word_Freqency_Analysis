@@ -46,7 +46,13 @@ namespace Word词频分析
                 //处理词频
                 var segmenter = new JiebaSegmenter();                
                 var segments = segmenter.Cut(str);
-                context.Response.Write(string.Join("/ ", segments));
+                var freqs = new Counter<string>(segmenter.Cut(str));
+                string json="";
+                foreach (var pair in freqs.MostCommon(5))
+                {
+                    json+="'{pair.Key}': '{pair.Value}';";
+                }
+                context.Response.Write(json);
             }
 
             else
