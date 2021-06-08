@@ -48,7 +48,7 @@ namespace Word词频分析
                 var segmenter = new JiebaSegmenter();                
                 var segments = segmenter.Cut(str);
 
-                //建立存储词频的字典
+                //1、建立存储词频的字典
                 Dictionary<string, int> dic = new Dictionary<string, int>();        
                 for (int i = 0; i < segments.Count(); i++)
                 {
@@ -63,7 +63,7 @@ namespace Word词频分析
                     }
                 }
                 
-                //从已有数据中剔除禁用词
+                //2、从已有数据中剔除禁用词
                 string[] stopwords = File.ReadAllLines(HttpContext.Current.Server.MapPath("stopwords.txt"));
                 foreach (var item in dic.ToList())
                 {
@@ -72,9 +72,11 @@ namespace Word词频分析
                         dic.Remove(item.Key);
                     }
                 }
+                //3、排序
+                var dicSort = from objDic in dic orderby objDic.Value descending select objDic;
                 //字典类型用上面的方法遍历访问key和value。
                 string wnf = "{";
-                foreach (KeyValuePair<string, int> kvp in dic)
+                foreach (KeyValuePair<string, int> kvp in dicSort)
                 {
                     wnf += "'" + kvp.Key + "':" + kvp.Value + ";";
                 }
