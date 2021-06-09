@@ -5,6 +5,12 @@
     <link href="feng.css" rel="stylesheet" type="text/css" />
     <script src="Ajax.js"></script>
     <title>词频分析</title>
+
+    <script>
+        function show_in_div(param) {
+            document.getElementById('div1').innerText = param;
+        }
+    </script>
 </head>
 
 <body>
@@ -14,81 +20,90 @@
 
     <block class="content">
 
-        <!--用户上传和添加-->        
-        <form class="item" id="uploadDOCX" method="post" action="Analyzer.ashx" enctype="multipart/form-data">
+        <!--用户上传和添加-->
+        <block class="item" id="uploadDOCX" enctype="multipart/form-data">
+
             <p class="upload" onclick="Doc_Upload.click()">+新增产品</p>
             <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".docx">
+
             <block class="bottom">
-                <button style="color: gray;" onclick="Upload()">上传</button>
+                <button style="color: gray;" onclick="Ajax('post', 'Analyzer.ashx', send_data(), show_in_div);">上传</button>
             </block>
-        </form>
-        
+
+        </block>
 
         <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">内容详情</p>
-                <p class="info">创建时间</p>
+                <p class="info">格式</p>
+                <p class="time">创建时间</p>
             </block>
 
             <block class="bottom">
                 <button style="color: gray;" onclick="show_detail()">详情</button>
-                <button style="color: firebrick;" onclick="delet()">删除</button>
+                <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
 
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">内容详情</p>
-                <p class="info">创建时间</p>
+                <p class="info">格式</p>
+                <p class="time">创建时间</p>
             </block>
 
             <block class="bottom">
                 <button style="color: gray;" onclick="show_detail()">详情</button>
-                <button style="color: firebrick;" onclick="delet()">删除</button>
+                <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
 
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">内容详情</p>
-                <p class="info">创建时间</p>
+                <p class="info">格式</p>
+                <p class="time">创建时间</p>
             </block>
 
             <block class="bottom">
                 <button style="color: gray;" onclick="show_detail()">详情</button>
-                <button style="color: firebrick;" onclick="delet()">删除</button>
+                <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
 
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">内容详情</p>
-                <p class="info">创建时间</p>
+                <p class="info">格式</p>
+                <p class="time">创建时间</p>
             </block>
 
             <block class="bottom">
                 <button style="color: gray;" onclick="show_detail()">详情</button>
-                <button style="color: firebrick;" onclick="delet()">删除</button>
+                <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
 
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">内容详情</p>
-                <p class="info">创建时间</p>
+                <p class="info">格式</p>
+                <p class="time">创建时间</p>
             </block>
 
             <block class="bottom">
                 <button style="color: gray;" onclick="show_detail()">详情</button>
-                <button style="color: firebrick;" onclick="delet()">删除</button>
+                <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
+
+        <div id="master">
+            <div>
+                <a href="FAQ.html">帮助 FAQ</a>
+                <a>&nbsp联系我们shishaungyuan@qq.com</a>
+            </div>
+        </div>
 
     </block>
 </body>

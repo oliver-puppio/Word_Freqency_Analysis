@@ -29,31 +29,52 @@
     }
 }
 
-function show_in_div(param) {
-    document.getElementById('div1').innerText = param;
-}
-
-function Upload() {
+function send_data() {
     var files = document.getElementById("Doc_Upload").prop("files");
     var data = new FormData();
     data.append('Doc_Upload', files[0]);
-
-    Ajax("post", "Analyzer.ashx", data, show_in_div);
+    return data;
 }
 
-function submitForm() {
-    document.forms['uploadDOCX'].submit()
-}
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
-    myfiles.unshift({
-        filename = new_j["filename"],
-        uptime = new_j["uptime"],
-        result = new_j["result"],
-    });
-    document.write(myfiles[0].filename);
+
+    if (myfileslength == 5) {
+        myfiles.pop();
+        myfileslength--;
+    }
+    if (myfileslength < 5) {
+        myfiles.unshift({
+            filename = new_j["filename"],
+            uptime = new_j["uptime"],
+            result = new_j["result"],
+        });
+        myfileslength++;
+    }
+    judge_json();
+
+}
+
+function delete_json(i) {
+    if (myfileslength > 0) {
+        myfiles.splice(i, 1);
+        myfileslength--;
+    }
+    judge_json();
+}
+
+function judge_json() {
+    for (i = 0; i < 5; i++) {
+        document.getElementById(String(i)).style.display = i < myfileslength ? "block" : "none";
+        if (i < myfileslength) {
+            document.getElementById(String(i)).getElementsByClassName("title").innerText = myfiles[i].filename;
+            document.getElementById(String(i)).getElementsByClassName("time").innerText = myfiles[i].uptime;
+            //document.getElementById(String(i)).getElementsByClassName("info").innerText =
+        }
+    }
 }
 
 
-var myfiles = new Array(5);   
+var myfiles = new Array(5);  
+var myfileslength = 0;

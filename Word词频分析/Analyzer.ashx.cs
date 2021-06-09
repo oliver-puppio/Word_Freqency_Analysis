@@ -23,10 +23,14 @@ namespace Word词频分析
             if (context.Request.Files.Count > 0)
             {
                 context.Response.Write(WordFrequency(Upfile(context), filename()));
+                //context.Response.End();
             }
 
             else
+            {
                 context.Response.Write("No call");
+            }
+
             context.Response.End();
         }
 
