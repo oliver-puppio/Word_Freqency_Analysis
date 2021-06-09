@@ -22,7 +22,7 @@ namespace Word词频分析
         {
             if (context.Request.Files.Count > 0)
             {
-                context.Response.Write(WordFrequency(Upfile(context)));
+                context.Response.Write(WordFrequency(Upfile(context), filename()));
             }
 
             else
@@ -36,6 +36,13 @@ namespace Word词频分析
             {
                 return false;
             }
+        }
+
+        public string filename()
+        {
+            //获取传送的文件
+            HttpPostedFile f = HttpContext.Current.Request.Files[0];
+            return f.FileName;
         }
 
         public string Upfile(HttpContext context)
@@ -65,7 +72,7 @@ namespace Word词频分析
             return str;
         }
 
-        public string WordFrequency(string str)
+        public string WordFrequency(string str, string filename)
         {
             var segmenter = new JiebaSegmenter();
             var segments = segmenter.Cut(str);
@@ -98,12 +105,12 @@ namespace Word词频分析
             //3、排序
             var dicSort = from objDic in dic orderby objDic.Value descending select objDic;
 
-            string wnf = "{";
+            string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + "',result:{";
             foreach (KeyValuePair<string, int> kvp in dicSort)
             {
-                wnf += kvp.Key + ":" + kvp.Value + ";";
+                wnf += kvp.Key + ":" + kvp.Value + ",";
             }
-            wnf += "}";
+            wnf += "}}";
 
             return wnf;
         }

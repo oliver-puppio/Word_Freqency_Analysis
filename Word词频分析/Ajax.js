@@ -44,3 +44,16 @@ function Upload() {
 function submitForm() {
     document.forms['uploadDOCX'].submit()
 }
+
+function create_json(param) {
+    var new_j = eval("(" + param + ")");
+    myfiles.unshift({
+        filename = new_j["filename"],
+        uptime = new_j["uptime"],
+        result = new_j["result"],
+    });
+    document.write(myfiles[0].filename);
+}
+
+
+var myfiles = new Array(5);   
