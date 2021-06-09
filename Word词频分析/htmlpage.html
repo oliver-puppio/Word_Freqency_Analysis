@@ -2,26 +2,95 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="冯.css" type="text/css" />
-    <link rel="stylesheet" href="于.css" type="text/css" />
+    <link href="feng.css" rel="stylesheet" type="text/css" />
     <script src="Ajax.js"></script>
     <title>词频分析</title>
 </head>
+
 <body>
-   
-    <br />
-        <form id="form1" action="Analyzer.ashx" method="post" enctype="multipart/form-data">
-            <div>
-                <span>选择文件：</span>
-                <input id="Doc_Upload" name="Doc_Upload" type="file" value="浏览" 
-                  accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"/>
-                <button id="按钮" value="上传" onclick="Upload()" size="20">上传</button>
-            </div>
+    <block class="topNav">
+        <img class="item" src="https://gitee.com/li-meijin/apk_detection_images/raw/master/20210609104415.png" />
+    </block>
+
+    <block class="content">
+
+        <!--用户上传和添加-->        
+        <form class="item" id="uploadDOCX" method="post" action="Analyzer.ashx" enctype="multipart/form-data">
+            <p class="upload" onclick="Doc_Upload.click()">+新增产品</p>
+            <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".docx">
+            <block class="bottom">
+                <button style="color: gray;" onclick="Upload()">上传</button>
+            </block>
         </form>
-    <br />
+        
 
+        <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
+        <block class="item">
+            <block class="top">
+                <p class="title">文章</p>
+                <p class="info">内容详情</p>
+                <p class="info">创建时间</p>
+            </block>
 
-    <div id="div1"></div>
+            <block class="bottom">
+                <button style="color: gray;" onclick="show_detail()">详情</button>
+                <button style="color: firebrick;" onclick="delet()">删除</button>
+            </block>
+        </block>
 
+        <block class="item">
+            <block class="top">
+                <p class="title">文章</p>
+                <p class="info">内容详情</p>
+                <p class="info">创建时间</p>
+            </block>
+
+            <block class="bottom">
+                <button style="color: gray;" onclick="show_detail()">详情</button>
+                <button style="color: firebrick;" onclick="delet()">删除</button>
+            </block>
+        </block>
+
+        <block class="item">
+            <block class="top">
+                <p class="title">文章</p>
+                <p class="info">内容详情</p>
+                <p class="info">创建时间</p>
+            </block>
+
+            <block class="bottom">
+                <button style="color: gray;" onclick="show_detail()">详情</button>
+                <button style="color: firebrick;" onclick="delet()">删除</button>
+            </block>
+        </block>
+
+        <block class="item">
+            <block class="top">
+                <p class="title">文章</p>
+                <p class="info">内容详情</p>
+                <p class="info">创建时间</p>
+            </block>
+
+            <block class="bottom">
+                <button style="color: gray;" onclick="show_detail()">详情</button>
+                <button style="color: firebrick;" onclick="delet()">删除</button>
+            </block>
+        </block>
+
+        <block class="item">
+            <block class="top">
+                <p class="title">文章</p>
+                <p class="info">内容详情</p>
+                <p class="info">创建时间</p>
+            </block>
+
+            <block class="bottom">
+                <button style="color: gray;" onclick="show_detail()">详情</button>
+                <button style="color: firebrick;" onclick="delet()">删除</button>
+            </block>
+        </block>
+
+    </block>
 </body>
 </html>
+

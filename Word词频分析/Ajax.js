@@ -1,5 +1,4 @@
-﻿
-function Ajax(method, url, param, callback) {
+﻿function Ajax(method, url, param, callback) {
     method = method || "get";/* 设置method属性默认值get*/
     param = param || null;
 
@@ -30,25 +29,8 @@ function Ajax(method, url, param, callback) {
     }
 }
 
-//$("#按钮").click(function () {
-//    var files = $('#Doc_Upload').prop('files');
-//    var data = new FormData();
-//    data.append('Doc_Upload', files[0]);
-
-//    $.ajax({
-//        type: 'POST',
-//        url: "Analyzer.ashx",
-//        data: data,
-//        cache: false,
-//        processData: false,
-//        contentType: false,
-//        success: function (ret) {
-//            alert(ret);
-//        }
-//    });
-//});
 function show_in_div(param) {
-    document.getElementById('div1').innerText = " <div id='div1'>"+param+"</div>";
+    document.getElementById('div1').innerText = param;
 }
 
 function Upload() {
@@ -56,6 +38,9 @@ function Upload() {
     var data = new FormData();
     data.append('Doc_Upload', files[0]);
 
-    Ajax("post", "Analyzer.ashx.cs", data, function (param)
-    { document.getElementById('div1').innerText = " <div id='div1'>" + param + "</div>" });
+    Ajax("post", "Analyzer.ashx", data, show_in_div);
+}
+
+function submitForm() {
+    document.forms['uploadDOCX'].submit()
 }
