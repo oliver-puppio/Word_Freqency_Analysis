@@ -17,21 +17,35 @@ namespace Word词频分析
     /// </summary>
     public class Analyzer : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
-           try
+            try
             {
-                HttpPostedFile f = HttpContext.Current.Request.Files[0];
-                string str = Upfile(context);
-                string ans = WordFrequency(str, f.FileName);
-                context.Response.Write(ans);  
+                context.Response.ContentType = "text/plain";
+                //context.Response.Write("Data received！Congratulations@@@@@@@@@@@@@@");//测试用
+                HttpPostedFile f = HttpContext.Current.Request.Files[0]; //!获取传送的文件
+                if (f != null)
+                {
+                    //context.Response.Write("f!=null");
+                    string txt_str = Stringnify_file(f);//!获取word中的文本内容
+                    string ans = WordFrequency(txt_str, f.FileName);//!
+
+                    context.Response.Write(ans);
+                }
+
+                else
+                    context.Response.Write("f==null");//测试用
+
             }
+
             catch
             {
-                context.Response.Write("No call");
+                context.Response.ContentType = "text/plain";
+                context.Response.Write("!!!!!!!!!!!!!!!Error!!!!!!!!!!!!!!!!!!");
             }
+
             context.Response.End();
+
         }
 
         public bool IsReusable
@@ -42,11 +56,9 @@ namespace Word词频分析
             }
         }
 
-        public string Upfile(HttpContext context)
+        public string Stringnify_file(HttpPostedFile f)//获取word中的文本内容并返回字符串
         {
-            //获取传送的文件,并保存在library中
-            context.Response.ContentType = "text/plain";
-            HttpPostedFile f = HttpContext.Current.Request.Files[0];
+            //保存在library中
             f.SaveAs(HttpContext.Current.Server.MapPath("~/Library/" + f.FileName));
             string path = HttpContext.Current.Server.MapPath("~/Library/") + f.FileName;
 
@@ -101,7 +113,25 @@ namespace Word词频分析
             //3、排序
             var dicSort = from objDic in dic orderby objDic.Value descending select objDic;
 
-            string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + "',result:{";
+            var info = "";
+            var j = 0;
+            foreach (KeyValuePair<string, int> kvp in dicSort)
+            {
+                if (j == 0)
+                {
+                    info += kvp.Key;
+                    j++;
+                }
+                else if (j < 3)
+                {
+                    info += "/" + kvp.Key;
+                    j++;
+                }
+                else break;
+            }
+
+
+            string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + ",info:'" + info + "',result:{";
             foreach (KeyValuePair<string, int> kvp in dicSort)
             {
                 wnf += kvp.Key + ":" + kvp.Value + ",";
@@ -112,3 +142,6 @@ namespace Word词频分析
         }
     }
 }
+
+
+

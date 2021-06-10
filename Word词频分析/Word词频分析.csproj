@@ -87,7 +87,7 @@
   <ItemGroup>
     <Content Include="Ajax.js" />
     <Content Include="FAQ.html" />
-    <Content Include="htmlpage.html" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
     <Content Include="于.css" />
     <Content Include="feng.css" />

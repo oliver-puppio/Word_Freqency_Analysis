@@ -45,6 +45,11 @@ function send_data() {
     
 }
 
+var myfiles = new Array(5);
+var myfileslength = 0;
+
+myfiles = [{ filename: "wode11.doc", uptime: "111", info: "111", result: { 'sds': 1, '344': 8, '333': 6 } }, { filename: "lll.doc", uptime: "www", info: "1344", result: { 'sds': 1, '344': 8, '333': 6 } }]
+myfileslength = 2;
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
@@ -55,14 +60,14 @@ function create_json(param) {
     }
     if (myfileslength < 5) {
         myfiles.unshift({
-            filename = new_j["filename"],
-            uptime = new_j["uptime"],
-            result = new_j["result"],
+            filename: new_j["filename"],
+            uptime: new_j["uptime"],
+            info: new_j["info"],
+            result: new_j["result"],
         });
         myfileslength++;
     }
     judge_json();
-
 }
 
 function delete_json(i) {
@@ -74,26 +79,17 @@ function delete_json(i) {
 }
 
 function judge_json() {
-    for (i = 0; i < 5; i++) {
+    for (var i = 0; i < 5; i++) {
         document.getElementById(String(i)).style.display = i < myfileslength ? "block" : "none";
         if (i < myfileslength) {
-            document.getElementById(String(i)).getElementsByClassName("title").innerText = myfiles[i].filename;
-            document.getElementById(String(i)).getElementsByClassName("time").innerText = myfiles[i].uptime;
-            var j = 0
-            var max_three = "";
-            for (var kvp in myfiles[i].result) {
-                if (j >= 3)
-                    break;
-                else if (j == 0)
-                    max_three = max_three + kvp.key
-                else
-                    max_three = max_three + "/" + kvp.key;
-                j++;
-            }
-            document.getElementById(String(i)).getElementsByClassName("info").innerText = max_three;
+            document.getElementById(String(i)).querySelector(".title").innerText = myfiles[i].filename;
+            document.getElementById(String(i)).querySelector(".time").innerText = myfiles[i].uptime;
+            document.getElementById(String(i)).querySelector(".info").innerText = myfiles[i].info;
         }
     }
 }
 
-var myfiles = new Array(5);  
-var myfileslength = 0;
+window.onload = function () {
+    //alert("这是window.onload函数");
+    judge_json();
+}
