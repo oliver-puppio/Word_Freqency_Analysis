@@ -15,28 +15,28 @@
 
 <body style="background-image: url(https://pic3.zhimg.com/v2-8299d5eae2d7c4ac66450baad1a1496a_r.jpg)">
     <block class="topNav">
-        <img class="item" src="https://gitee.com/li-meijin/apk_detection_images/raw/master/20210609104415.png" />
+        <img class="item" src="https://i.postimg.cc/6QrTjQh6/1.png" />
     </block>
 
     <block class="content">
 
         <!--用户上传和添加-->
-        <block class="item" id="uploadDOCX" enctype="multipart/form-data">
+        <form class="item" id="uploadDOCX" enctype="multipart/form-data">
 
-            <p class="upload" onclick="Doc_Upload.click()">+新增产品</p>
-            <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".docx">
+            <p id="新增产品" class="upload" onclick="Doc_Upload.click()">+新增产品</p>
+            <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".doc,.docx,.txt,.text" onchange="新增产品.innerText = this.files[0].name">
 
             <block class="bottom">
                 <button style="color: gray;" onclick="Ajax('post', 'Analyzer.ashx', send_data(), show_in_div);">上传</button>
             </block>
 
-        </block>
+        </form>
 
         <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">格式</p>
+                <p class="info">高频词</p>
                 <p class="time">创建时间</p>
             </block>
 
@@ -49,7 +49,7 @@
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">格式</p>
+                <p class="info">高频词</p>
                 <p class="time">创建时间</p>
             </block>
 
@@ -62,7 +62,7 @@
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">格式</p>
+                <p class="info">高频词</p>
                 <p class="time">创建时间</p>
             </block>
 
@@ -75,7 +75,7 @@
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">格式</p>
+                <p class="info">高频词</p>
                 <p class="time">创建时间</p>
             </block>
 
@@ -88,7 +88,7 @@
         <block class="item">
             <block class="top">
                 <p class="title">文章</p>
-                <p class="info">格式</p>
+                <p class="info">高频词</p>
                 <p class="time">创建时间</p>
             </block>
 
@@ -104,8 +104,6 @@
                 <a>&nbsp联系我们shishaungyuan@qq.com</a>
             </div>
         </div>
-
     </block>
 </body>
 </html>
-

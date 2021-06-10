@@ -20,17 +20,14 @@ namespace Word词频分析
 
         public void ProcessRequest(HttpContext context)
         {
-            if (context.Request.Files.Count > 0)
+           try
             {
-                context.Response.Write(WordFrequency(Upfile(context), filename()));
-                //context.Response.End();
+                context.Response.Write(WordFrequency(Upfile(context), filename()));  
             }
-
-            else
+            catch
             {
                 context.Response.Write("No call");
             }
-
             context.Response.End();
         }
 

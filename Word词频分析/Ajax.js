@@ -30,12 +30,21 @@
 }
 
 function send_data() {
-    var files = document.getElementById("Doc_Upload").prop("files");
+    var files = document.getElementById("Doc_Upload").files[0];
     var data = new FormData();
     data.append('Doc_Upload', files[0]);
     return data;
 }
 
+//function upload() {
+//    $.ajax({
+//        type: "post",
+//        url: "Analyzer.ashx",
+//        data: send_data,
+//        success: function (data, textStatus) { alert(data); },
+//        error: function () {alert("error")}
+//    });
+//}
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
