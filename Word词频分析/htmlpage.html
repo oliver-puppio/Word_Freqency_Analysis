@@ -1,16 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>词频分析</title>
     <meta charset="utf-8" />
     <link href="feng.css" rel="stylesheet" type="text/css" />
-    <script src="Ajax.js"></script>
-    <title>词频分析</title>
-
-    <script>
-        function show_in_div(param) {
-            document.getElementById('div1').innerText = param;
-        }
-    </script>
+    <script type="text/javascript" src="Ajax.js"></script>
 </head>
 
 <body style="background-image: url(https://pic3.zhimg.com/v2-8299d5eae2d7c4ac66450baad1a1496a_r.jpg)">
@@ -22,16 +16,16 @@
 
         <!--用户上传和添加-->
         <form class="item" id="uploadDOCX" enctype="multipart/form-data">
-
-            <p id="新增产品" class="upload" onclick="Doc_Upload.click()">+新增产品</p>
+            <p id="新增产品" class="upload" onclick="Doc_Upload.click()">+选择文件</p>
             <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".doc,.docx,.txt,.text" onchange="新增产品.innerText = this.files[0].name">
 
             <block class="bottom">
-                <button style="color: gray;" onclick="Ajax('post', 'Analyzer.ashx', send_data(), show_in_div);">上传</button>
+                <button id="btn" style="color: gray;" onclick="Ajax('post', 'Analyzer.ashx', send_data(), alert);">上传</button>
             </block>
 
         </form>
 
+        <block id="div1">div在此</block>
         <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
         <block class="item">
             <block class="top">
@@ -97,13 +91,11 @@
                 <button style="color: firebrick;" onclick="delete_json()">删除</button>
             </block>
         </block>
-
-        <div id="master">
-            <div>
-                <a href="FAQ.html">帮助 FAQ</a>
-                <a>&nbsp联系我们shishaungyuan@qq.com</a>
-            </div>
-        </div>
     </block>
+
+    <div class="demo2" ; style=" text-align: center;background-image: url(https://ibb.co/B6yyjJk)">
+        <a href="FAQ.html">帮助 FAQ</a>
+        <a>&nbsp联系我们shishaungyuan@qq.com</a>
+    </div>
 </body>
 </html>

@@ -22,7 +22,10 @@ namespace Word词频分析
         {
            try
             {
-                context.Response.Write(WordFrequency(Upfile(context), filename()));  
+                HttpPostedFile f = HttpContext.Current.Request.Files[0];
+                string str = Upfile(context);
+                string ans = WordFrequency(str, f.FileName);
+                context.Response.Write(ans);  
             }
             catch
             {
@@ -39,18 +42,10 @@ namespace Word词频分析
             }
         }
 
-        public string filename()
-        {
-            //获取传送的文件
-            HttpPostedFile f = HttpContext.Current.Request.Files[0];
-            return f.FileName;
-        }
-
         public string Upfile(HttpContext context)
         {
             //获取传送的文件,并保存在library中
             context.Response.ContentType = "text/plain";
-            //HttpPostedFile f = context.Request.Files[0];
             HttpPostedFile f = HttpContext.Current.Request.Files[0];
             f.SaveAs(HttpContext.Current.Server.MapPath("~/Library/" + f.FileName));
             string path = HttpContext.Current.Server.MapPath("~/Library/") + f.FileName;

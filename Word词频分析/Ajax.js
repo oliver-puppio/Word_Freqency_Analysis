@@ -32,19 +32,19 @@
 function send_data() {
     var files = document.getElementById("Doc_Upload").files[0];
     var data = new FormData();
-    data.append('Doc_Upload', files[0]);
-    return data;
+    data.append('Doc_Upload', files);
+    if (data) {
+        alert("发送成功！");
+        return data;
+
+    }
+    else {
+        alert("不可以上传空数据！");
+        return null;
+    }
+    
 }
 
-//function upload() {
-//    $.ajax({
-//        type: "post",
-//        url: "Analyzer.ashx",
-//        data: send_data,
-//        success: function (data, textStatus) { alert(data); },
-//        error: function () {alert("error")}
-//    });
-//}
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
@@ -79,11 +79,21 @@ function judge_json() {
         if (i < myfileslength) {
             document.getElementById(String(i)).getElementsByClassName("title").innerText = myfiles[i].filename;
             document.getElementById(String(i)).getElementsByClassName("time").innerText = myfiles[i].uptime;
-            //document.getElementById(String(i)).getElementsByClassName("info").innerText =
+            var j = 0
+            var max_three = "";
+            for (var kvp in myfiles[i].result) {
+                if (j >= 3)
+                    break;
+                else if (j == 0)
+                    max_three = max_three + kvp.key
+                else
+                    max_three = max_three + "/" + kvp.key;
+                j++;
+            }
+            document.getElementById(String(i)).getElementsByClassName("info").innerText = max_three;
         }
     }
 }
-
 
 var myfiles = new Array(5);  
 var myfileslength = 0;
