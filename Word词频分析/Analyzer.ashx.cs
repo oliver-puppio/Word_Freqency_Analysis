@@ -9,6 +9,8 @@ using Spire.Doc.Documents;
 using System.Threading.Tasks;
 using JiebaNet.Segmenter;
 using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Word词频分析
 {
@@ -19,34 +21,28 @@ namespace Word词频分析
     {
         public void ProcessRequest(HttpContext context)
         {
-            try
-            {
-                context.Response.ContentType = "text/plain";
-                //context.Response.Write("Data received！Congratulations@@@@@@@@@@@@@@");//测试用
-                HttpPostedFile f = HttpContext.Current.Request.Files[0]; //!获取传送的文件
-                if (f != null)
-                {
-                    //context.Response.Write("f!=null");
-                    string txt_str = Stringnify_file(f);//!获取word中的文本内容
-                    string ans = WordFrequency(txt_str, f.FileName);//!
+           
+            context.Response.ContentType = "text/plain";
+            try {
 
+                    if (context != null)
+                    {
+                        var f = context.Request.Files[0];
+                        string txt_str = Stringnify_file(f);
+                        string ans = WordFrequency(txt_str, f.FileName);
+                       
                     context.Response.Write(ans);
+                    }
+                    else
+                        context.Response.Write("context==null");
                 }
-
-                else
-                    context.Response.Write("f==null");//测试用
-
-            }
-
-            catch
-            {
-                context.Response.ContentType = "text/plain";
-                context.Response.Write("!!!!!!!!!!!!!!!Error!!!!!!!!!!!!!!!!!!");
-            }
-
+            catch { context.Response.Write("!error from server!"); }
             context.Response.End();
+            context.Response.Clear();
 
         }
+
+        public string test_str() { return "success_string"; }
 
         public bool IsReusable
         {

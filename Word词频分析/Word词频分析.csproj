@@ -86,10 +86,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ajax.js" />
+    <Content Include="Details.html" />
     <Content Include="FAQ.html" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
-    <Content Include="于.css" />
+    <Content Include="WordCloud\Details.css" />
+    <Content Include="WordCloud\dwc.js" />
+    <Content Include="WordCloud\echarts-wordcloud.js" />
+    <Content Include="WordCloud\echarts-wordcloud.min.js" />
+    <Content Include="WordCloud\echarts.js" />
+    <Content Include="WordCloud\echarts.min.js" />
+    <Content Include="WordCloud\layout.js" />
+    <Content Include="WordCloud\wordCloud.js" />
+    <Content Include="WordCloud\WordCloudSeries.js" />
+    <Content Include="WordCloud\WordCloudView.js" />
     <Content Include="feng.css" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +117,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WordCloud\echarts-wordcloud.js.map" />
+    <Content Include="WordCloud\echarts-wordcloud.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />

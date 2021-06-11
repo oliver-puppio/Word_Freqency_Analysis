@@ -7,10 +7,9 @@
     xhr.open(method, url, true);//open方法只是设置了一些请求参数。
 
     //如果请求方法是post,下面这名必须加
-    if (method.toLowerCase() == "post") {
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    }
-
+    //if (method.toLowerCase() == "post") {
+    //    xhr.setRequestHeader("Content-Type", "multipart/form-data");
+    //}
     xhr.send(param);//发送请求及数据，
 
     xhr.onreadystatechange = function () {
@@ -29,25 +28,33 @@
     }
 }
 
-function send_data() {
-    var files = document.getElementById("Doc_Upload").files[0];
-    var data = new FormData();
-    data.append('Doc_Upload', files);
-    if (data) {
-        alert("发送成功！");
-        return data;
+function pathChange(p) {
+    document.forms[0].fName.value = p.value;
+    if (checkText(document.getElementById('photo'))) {
+        showImg(p, 'pre');
+    };
+}
 
+function new_upload() {
+    var file = document.getElementById("Doc_Upload");
+    var upload_file = file.files[0];
+    var formdata = new FormData();
+    xhr = new XMLHttpRequest();
+    formdata.append("Doc_Upload", upload_file);
+    xhr = open('post', 'Analyzer.ashx', true);
+    xhr.send(formdata);
+    xhr.onreadystatechange = function()
+        {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
+        }
+        xhr.send(formdata);
     }
-    else {
-        alert("不可以上传空数据！");
-        return null;
-    }
-    
 }
 
 var myfiles = new Array(5);
 var myfileslength = 0;
-
+var formdata = new FormData();
 myfiles = [{ filename: "wode11.doc", uptime: "111", info: "111", result: { 'sds': 1, '344': 8, '333': 6 } }, { filename: "lll.doc", uptime: "www", info: "1344", result: { 'sds': 1, '344': 8, '333': 6 } }]
 myfileslength = 2;
 
@@ -90,6 +97,7 @@ function judge_json() {
 }
 
 window.onload = function () {
-    //alert("这是window.onload函数");
     judge_json();
+    
+
 }
