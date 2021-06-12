@@ -91,6 +91,7 @@
     <Content Include="Public\Details.html" />
     <Content Include="Public\FAQ.html" />
     <Content Include="Public\Index.html" />
+    <Content Include="stopwords.txt" />
     <Content Include="Web.config" />
     <Content Include="JavaScript\dwc.js" />
     <Content Include="JavaScript\echarts-wordcloud.js" />

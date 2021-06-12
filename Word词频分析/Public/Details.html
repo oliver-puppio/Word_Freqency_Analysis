@@ -2,7 +2,6 @@
 
 <head>
     <meta charset="utf-8" />
-
     <script src="../JavaScript/echarts.js"></script>
     <script src="../JavaScript/echarts-wordcloud.js"></script>
     <script src="../JavaScript/dwc.js"></script>
@@ -10,8 +9,11 @@
 
     <title>Word词频分析</title>
     <script type="text/javascript">
-        var str1 =
-            "{filename:'测试.docx',uptime:'2021/6/9 16:13:00',result:{物流:19,数据:16,菜鸟:12,服务:9,消费者:7,技术:7,快速:7,提升:6,智能:6,商品:6,包裹:5,智慧:5,AR:4,行业:4,用户:4,工作人员:4,will:4,发展:3,效率:3,体验:3,商家:3,变得:3,快递:3,配送:3,仓库:3,中国:3,方式:3,引入:2,全新:2,领域:2,改变:2,越来越:2,高效:2,舱内:2,核对:2,质量:2,分类:2,录入:2,推动:2,出库:2,找到:2,减少:2,资源:2,未来:2,规划:2,路线:2,状态:2,提前:2,革新:2,时刻:2,机器人:2,机械:2,全球:2,市场:2,计算:2,触达:2,世界:2,提供:2,思维:2,供应链:2,Never:2,have:2,you:2,pass:2,}}"
+        //var str1 =
+          //  "{filename:'测试.docx',uptime:'2021/6/9 16:13:00',result:{物流:19,数据:16,菜鸟:12,服务:9,消费者:7,技术:7,快速:7,提升:6,智能:6,商品:6,包裹:5,智慧:5,AR:4,行业:4,用户:4,工作人员:4,will:4,发展:3,效率:3,体验:3,商家:3,变得:3,快递:3,配送:3,仓库:3,中国:3,方式:3,引入:2,全新:2,领域:2,改变:2,越来越:2,高效:2,舱内:2,核对:2,质量:2,分类:2,录入:2,推动:2,出库:2,找到:2,减少:2,资源:2,未来:2,规划:2,路线:2,状态:2,提前:2,革新:2,时刻:2,机器人:2,机械:2,全球:2,市场:2,计算:2,触达:2,世界:2,提供:2,思维:2,供应链:2,Never:2,have:2,you:2,pass:2,}}";
+        //var detailed_information = eval('(' + str1 + ')');
+        var str1 = localStorage.getItem(localStorage.getItem("current"));
+        localStorage.removeItem("current");
         var detailed_information = eval('(' + str1 + ')');
         var word_filename = detailed_information.filename;
         var word_uptime = detailed_information.uptime;

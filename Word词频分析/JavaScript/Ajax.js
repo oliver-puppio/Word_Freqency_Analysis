@@ -28,12 +28,24 @@
     }
 }
 
-var myfiles = new Array(5);
-var myfileslength = 0;
+var myfiles = localStorage.length > 0 ? load_file() : new Array(5);
+var myfileslength = localStorage.length > 0 ? localStorage.length : 0;
+
+function load_file() {
+    var ans = new Array(localStorage.length);
+    for (var i = 0; i < localStorage.length; i++) {
+        ans[i] = eval("(" + localStorage.getItem(String(i)) + ")");
+    }
+    return ans;
+}
+
+function renew_localStorage() {
+    for (var i = 0; i < myfileslength; i++)
+        localStorage.setItem(String(i), JSON.stringify(myfiles[i]));
+}
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
-    //var new_j = param;
     if (myfileslength == 5) {
         myfiles.pop();
         myfileslength--;
@@ -47,6 +59,7 @@ function create_json(param) {
         });
         myfileslength++;
     }
+    renew_localStorage();
     judge_json();
 }
 
@@ -55,6 +68,7 @@ function delete_json(i) {
         myfiles.splice(i, 1);
         myfileslength--;
     }
+    renew_localStorage();
     judge_json();
 }
 
@@ -72,6 +86,7 @@ function judge_json() {
 
 window.onload = function () {
     judge_json();
+    //init();
 }
 
 function init() {
@@ -181,4 +196,9 @@ function init() {
         '</body>' +
 
         '</html>');
+}
+
+function show_detail(param) {
+    localStorage.setItem("current", string(param));
+    window.location.href = "Details.html";
 }

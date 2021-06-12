@@ -1,4 +1,5 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,21 +9,21 @@
 </head>
 
 <body style="background-image: url(https://pic3.zhimg.com/v2-8299d5eae2d7c4ac66450baad1a1496a_r.jpg)">
-    <block>
-        <block class="topNav">
+    <div>
+        <div class="topNav">
             <img class="item" src="https://i.postimg.cc/6QrTjQh6/1.png" />
-        </block>
+        </div>
 
-        <block class="content">
+        <div class="content">
             <!--用户上传和添加-->
-            <block class="item" id="UploadDOCX" style=" height: 160px">
+            <div class="item" id="UploadDOCX" style=" height: 160px">
                 <p id="新增产品" class="upload" onclick="Doc_Upload.click()">+新增产品</p>
                 <input type="file" name="Doc_Upload" id="Doc_Upload" style="display:none;"
                        accept=".doc,.docx,.txt,.text" onchange="新增产品.innerText = this.files[0].name; " multiple>
-                <block class="bottom">
+                <div class="bottom">
                     <button id="btn" style="color: gray;">上传</button>
-                </block>
-            </block>
+                </div>
+            </div>
 
             <script>
                 var oBtn = document.getElementById("btn");
@@ -30,78 +31,78 @@
                 oBtn.onclick = function () {
                     var fd = new FormData();
                     fd.append("Doc_Upload", oFile.files[0]);
-                    if()
+                    alert("上传成功！");
                     Ajax("post", "../Analyzer.ashx", fd, create_json);
                 }
             </script>
 
             <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
-            <block class="item" id="0" style="display:none">
-                <block class="top">
+            <div class="item" id="0" style="display:none">
+                <div class="top">
                     <p class="title">文章</p>
                     <p class="info">高频词</p>
                     <p class="time">创建时间</p>
-                </block>
+                </div>
 
-                <block class="bottom">
-                    <button style="color: gray;" onclick="show_detail()">详情</button>
+                <div class="bottom">
+                    <button style="color: gray;" onclick="show_detail(0)">详情</button>
                     <button style="color: firebrick;" onclick="delete_json(0)">删除</button>
-                </block>
-            </block>
+                </div>
+            </div>
 
-            <block class="item" id="1" style="display:none">
-                <block class="top">
+            <div class="item" id="1" style="display:none">
+                <div class="top">
                     <p class="title">文章</p>
                     <p class="info">高频词</p>
                     <p class="time">创建时间</p>
-                </block>
+                </div>
 
-                <block class="bottom">
-                    <button style="color: gray;" onclick="show_detail()">详情</button>
+                <div class="bottom">
+                    <button style="color: gray;" onclick="show_detail(1)">详情</button>
                     <button style="color: firebrick;" onclick="delete_json(1)">删除</button>
-                </block>
-            </block>
+                </div>
+            </div>
 
-            <block class="item" id="2" style="display:none">
-                <block class="top">
+            <div class="item" id="2" style="display:none">
+                <div class="top">
                     <p class="title">文章</p>
                     <p class="info">高频词</p>
                     <p class="time">创建时间</p>
-                </block>
+                </div>
 
-                <block class="bottom">
-                    <button style="color: gray;" onclick="show_detail()">详情</button>
+                <div class="bottom">
+                    <button style="color: gray;" onclick="show_detail(2)">详情</button>
                     <button style="color: firebrick;" onclick="delete_json(2)">删除</button>
-                </block>
-            </block>
+                </div>
+            </div>
 
-            <block class="item" id="3" style="display:none">
-                <block class="top">
+            <div class="item" id="3" style="display:none">
+                <div class="top">
                     <p class="title">文章</p>
                     <p class="info">高频词</p>
                     <p class="time">创建时间</p>
-                </block>
+                </div>
 
-                <block class="bottom">
-                    <button style="color: gray;" onclick="show_detail()">详情</button>
+                <div class="bottom">
+                    <button style="color: gray;" onclick="show_detail(3)">详情</button>
                     <button style="color: firebrick;" onclick="delete_json(3)">删除</button>
-                </block>
-            </block>
+                </div>
+            </div>
 
-            <block class="item" id="4" style="display:none">
-                <block class="top">
+            <div class="item" id="4" style="display:none">
+                <div class="top">
                     <p class="title">文章</p>
                     <p class="info">高频词</p>
                     <p class="time">创建时间</p>
-                </block>
+                </div>
 
-                <block class="bottom">
-                    <button style="color: gray;" onclick="show_detail()">详情</button>
+                <div class="bottom">
+                    <button style="color: gray;" onclick="show_detail(4)">详情</button>
                     <button style="color: firebrick;" onclick="delete_json(4)">删除</button>
-                </block>
-            </block>
-        </block>
-    </block>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="demo2" ; style=" text-align: center;background-image: url(https://ibb.co/B6yyjJk)">
         <a href="FAQ.html">帮助 FAQ</a>
         <a>&nbsp联系我们shishaungyuan@qq.com</a>
