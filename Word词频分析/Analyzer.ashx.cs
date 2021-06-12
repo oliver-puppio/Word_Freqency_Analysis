@@ -21,28 +21,29 @@ namespace Word词频分析
     {
         public void ProcessRequest(HttpContext context)
         {
-           
             context.Response.ContentType = "text/plain";
-            try {
-
-                    if (context != null)
-                    {
-                        var f = context.Request.Files[0];
-                        string txt_str = Stringnify_file(f);
-                        string ans = WordFrequency(txt_str, f.FileName);
-                       
+            try
+            {
+                    var f = context.Request.Files[0];
+                    f.SaveAs(HttpContext.Current.Server.MapPath("~/Library/" + f.FileName));
+                    string path = HttpContext.Current.Server.MapPath("~/Library/") + f.FileName;
+                    string txt_str = Stringnify_file(path);
+                    string ans = WordFrequency(txt_str, f.FileName);
+                    File.WriteAllText(HttpContext.Current.Server.MapPath("~/Library/result.txt"), ans);
                     context.Response.Write(ans);
-                    }
-                    else
-                        context.Response.Write("context==null");
-                }
-            catch { context.Response.Write("!error from server!"); }
-            context.Response.End();
-            context.Response.Clear();
+            }
 
+            catch
+            {
+                context.Response.Write("!Error from server!");
+            }
+
+            finally
+            {
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+            }
         }
 
-        public string test_str() { return "success_string"; }
 
         public bool IsReusable
         {
@@ -52,11 +53,8 @@ namespace Word词频分析
             }
         }
 
-        public string Stringnify_file(HttpPostedFile f)//获取word中的文本内容并返回字符串
+        public string Stringnify_file(string path)//获取word中的文本内容并返回字符串
         {
-            //保存在library中
-            f.SaveAs(HttpContext.Current.Server.MapPath("~/Library/" + f.FileName));
-            string path = HttpContext.Current.Server.MapPath("~/Library/") + f.FileName;
 
             //读取word文件并提取文本内容到temp.txt中
             Document doc = new Document();
@@ -127,10 +125,10 @@ namespace Word词频分析
             }
 
 
-            string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + ",info:'" + info + "',result:{";
+            string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + "',info:'" + info + "',result:{";
             foreach (KeyValuePair<string, int> kvp in dicSort)
             {
-                wnf += kvp.Key + ":" + kvp.Value + ",";
+                wnf += "'"+kvp.Key + "':'" + kvp.Value + "',";
             }
             wnf += "}}";
 

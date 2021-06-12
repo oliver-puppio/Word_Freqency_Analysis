@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <link href="feng.css" rel="stylesheet" type="text/css" />
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"> </script>
     <script src="Ajax.js"></script>
     <title>词频分析</title>
 </head>
@@ -16,15 +15,25 @@
 
         <block class="content">
             <!--用户上传和添加-->
-            <form class="item" id="uploadDOCX" method="post" action="Analyzer.ashx" enctype="multipart/form-data" style=" height: 160px">
-
+            <block class="item" id="UploadDOCX" style=" height: 160px">
                 <p id="新增产品" class="upload" onclick="Doc_Upload.click()">+新增产品</p>
-                <input type="file" name="Doc_Upload" style="display:none;" id="Doc_Upload" accept=".doc,.docx,.txt,.text" onchange="新增产品.innerText = this.files[0].name">
-
+                <input type="file" name="Doc_Upload" id="Doc_Upload" style="display:none;"
+                       accept=".doc,.docx,.txt,.text" onchange="新增产品.innerText = this.files[0].name; " multiple>
                 <block class="bottom">
-                    <button style="color: gray;" onclick="$('#uploadDOCX').submit(); ">上传</button>
+                    <button id="btn" style="color: gray;">上传</button>
                 </block>
-            </form>
+            </block>
+
+            <script>
+                var oBtn = document.getElementById("btn");
+                var oFile = document.getElementById("Doc_Upload");
+                oBtn.onclick = function () {
+                    var fd = new FormData();
+                    fd.append("Doc_Upload", oFile.files[0]);
+                    alert("上传成功！");
+                    Ajax("post", "Analyzer.ashx", fd, create_json);
+                }
+            </script>
 
             <!--展示用户的每项，此处为静态页面，实际需要从数据库读取渲染到前端-->
             <block class="item" id="0" style="display:none">
