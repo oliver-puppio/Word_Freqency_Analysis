@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link href="feng.css" rel="stylesheet" type="text/css" />
-    <script src="Ajax.js"></script>
+    <link href="../CSS/feng.css" rel="stylesheet" type="text/css" />
+    <script src="../JavaScript/Ajax.js"></script>
     <title>词频分析</title>
 </head>
 
@@ -31,7 +31,7 @@
                     var fd = new FormData();
                     fd.append("Doc_Upload", oFile.files[0]);
                     alert("上传成功！");
-                    Ajax("post", "Analyzer.ashx", fd, create_json);
+                    Ajax("post", "../Analyzer.ashx", fd, create_json);
                 }
             </script>
 

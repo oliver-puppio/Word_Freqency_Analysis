@@ -30,8 +30,8 @@
 
 var myfiles = new Array(5);
 var myfileslength = 0;
-myfiles = [{ filename: "wode11.doc", uptime: "111", info: "111", result: { 'sds': 1, '344': 8, '333': 6 } }, { filename: "lll.doc", uptime: "www", info: "1344", result: { 'sds': 1, '344': 8, '333': 6 } }]
-myfileslength = 2;
+//myfiles = [{ filename: "wode11.doc", uptime: "111", info: "111", result: { 'sds': 1, '344': 8, '333': 6 } }, { filename: "lll.doc", uptime: "www", info: "1344", result: { 'sds': 1, '344': 8, '333': 6 } }]
+//myfileslength = 2;
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
@@ -62,6 +62,7 @@ function delete_json(i) {
 
 function judge_json() {
     for (var i = 0; i < 5; i++) {
+        document.getElementById(String(i)).querySelector(".title").title = myfiles[i].filename;
         document.getElementById(String(i)).style.display = i < myfileslength ? "block" : "none";
         if (i < myfileslength) {
             document.getElementById(String(i)).querySelector(".title").innerText = myfiles[i].filename;

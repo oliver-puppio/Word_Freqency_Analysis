@@ -66,7 +66,7 @@ function generateTable(data) {
     var tbody = document.getElementById("WordFrequencyTableBody");
     tbody.innerHTML = "";
     var str1 = "";
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < (data.length < 30 ? data.length:30); i++) {
         /*       var tr = document.createElement("tr");
         var tdordinal = document.createElement("td");
         tdordinal.innerHTML = i;

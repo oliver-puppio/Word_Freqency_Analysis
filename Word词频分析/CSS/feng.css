@@ -83,6 +83,10 @@ html {
 .top .title {
     font-size: 20px;
     font-weight: bold;
+    width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .top .info {

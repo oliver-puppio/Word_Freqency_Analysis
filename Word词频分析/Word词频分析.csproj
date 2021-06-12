@@ -85,22 +85,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ajax.js" />
-    <Content Include="Details.html" />
-    <Content Include="FAQ.html" />
-    <Content Include="index.html" />
+    <Content Include="CSS\Details.css" />
+    <Content Include="CSS\feng.css" />
+    <Content Include="JavaScript\Ajax.js" />
+    <Content Include="Public\Details.html" />
+    <Content Include="Public\FAQ.html" />
+    <Content Include="Public\Index.html" />
     <Content Include="Web.config" />
-    <Content Include="WordCloud\Details.css" />
-    <Content Include="WordCloud\dwc.js" />
-    <Content Include="WordCloud\echarts-wordcloud.js" />
-    <Content Include="WordCloud\echarts-wordcloud.min.js" />
-    <Content Include="WordCloud\echarts.js" />
-    <Content Include="WordCloud\echarts.min.js" />
-    <Content Include="WordCloud\layout.js" />
-    <Content Include="WordCloud\wordCloud.js" />
-    <Content Include="WordCloud\WordCloudSeries.js" />
-    <Content Include="WordCloud\WordCloudView.js" />
-    <Content Include="feng.css" />
+    <Content Include="JavaScript\dwc.js" />
+    <Content Include="JavaScript\echarts-wordcloud.js" />
+    <Content Include="JavaScript\echarts-wordcloud.min.js" />
+    <Content Include="JavaScript\echarts.js" />
+    <Content Include="JavaScript\echarts.min.js" />
+    <Content Include="JavaScript\layout.js" />
+    <Content Include="JavaScript\wordCloud.js" />
+    <Content Include="JavaScript\WordCloudSeries.js" />
+    <Content Include="JavaScript\WordCloudView.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzer.ashx.cs">
@@ -117,8 +117,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="WordCloud\echarts-wordcloud.js.map" />
-    <Content Include="WordCloud\echarts-wordcloud.min.js.map" />
+    <Content Include="JavaScript\echarts-wordcloud.js.map" />
+    <Content Include="JavaScript\echarts-wordcloud.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />
