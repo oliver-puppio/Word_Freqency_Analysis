@@ -30,7 +30,7 @@
                 oBtn.onclick = function () {
                     var fd = new FormData();
                     fd.append("Doc_Upload", oFile.files[0]);
-                    alert("上传成功！");
+                    if()
                     Ajax("post", "../Analyzer.ashx", fd, create_json);
                 }
             </script>

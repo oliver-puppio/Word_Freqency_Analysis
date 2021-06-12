@@ -3,114 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <title>词频分析-疑问解答</title>
+    <link href="../CSS/feng.css" rel="stylesheet" type="text/css" />
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 100%;
+            flex - direction: column;
+            height: 100 %;
+            width: 100 %;
             overflow: scroll;
-            overflow-x: hidden;
+            overflow - x: hidden;
             padding: 0;
             margin: 0;
-            box-sizing: border-box;
+            box - sizing: border - box;
         }
 
         .topNav {
-            height: 43px;
-            width: 100%;
-            display: flex;
-            flex-direction: row-reverse;
-            margin: 0;
-        }
+                    height: 43px;
+                    width: 100 %;
+                    display: flex;
+                    flex - direction: row - reverse;
+                    margin: 0;
+                }
 
             .topNav img {
-                height: 150%;
-                margin: auto 100px;
-                text-align: center;
-            }
+                    height: 150 %;
+                    margin: auto 100px;
+                    text - align: center;
+                }
 
         .demo2 {
-            position: fixed;
-            left: 0;
-            bottom: 0px;
-            width: 100%;
-            z-index: 999;
-        }
+                    position: fixed;
+                    left: 0;
+                    bottom: 0px;
+                    width: 100 %;
+                    z - index: 999;
+                }
 
         .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
+                    flex: 1;
+                    display: flex;
+                    flex - direction: column;
+                    width: 100 %;
+                }
 
-            .content .top {
-                width: 100%;
-                border: #eae9e7 1.5px;
-                margin: 0;
-            }
+            .content.top {
+                    width: 100 %;
+                    border: #eae9e7 1.5px;
+                    margin: 0;
+                }
 
         .top img {
-            float: left;
-            height: 60px;
-            margin: 5px 20px;
-        }
+                    float: left;
+                    height: 60px;
+                    margin: 5px 20px;
+                }
 
         .top p {
-            margin: 30px;
-            font-weight: bold;
-        }
+                    margin: 30px;
+                    font - weight: bold;
+                }
 
-        .content .item {
-            width: 90%;
-            margin: auto;
-            border: #eae9e7 2px solid;
-            border-style: groove;
-            border-radius: 2px;
-            display: flex;
-            flex-direction: row;
-        }
+        .content.item {
+                    width: 90 %;
+                    margin: auto;
+                    border: #eae9e7 2px solid;
+                    border - style: groove;
+                    border - radius: 2px;
+                    display: flex;
+                    flex - direction: row;
+                }
 
         .item p {
-            flex: 1;
-            margin: 20px auto;
-            margin-left: 50px;
-        }
+                    flex: 1;
+                    margin: 20px auto;
+                    margin - left: 50px;
+                }
 
-        .item .dropdown {
-            position: relative;
-            display: inline-block;
-            height: 60px;
-            float: left;
-        }
+        .item.dropdown {
+                    position: relative;
+                    display: inline - block;
+                    height: 60px;
+                    float: left;
+                }
 
         .dropdown img {
-            height: 70%;
-            margin: auto 0;
-        }
+                    height: 70 %;
+                    margin: auto 0;
+                }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 800px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            padding: 12px 16px;
-        }
+        .dropdown - content {
+                    display: none;
+                    position: absolute;
+                    background - color: #f9f9f9;
+                    min - width: 800px;
+                    box - shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    padding: 12px 16px;
+                }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-            width: 100%;
-            z-index: 100;
-            transform: translate(-800px,0);
-            -webkit-transform: translate(-800px,0); /* Safari and Chrome */
-        }
+        .dropdown: hover.dropdown - content {
+                    display: block;
+                    width: 100 %;
+                    z - index: 100;
+                    transform: translate(-800px, 0);
+                    -webkit - transform: translate(-800px, 0); /* Safari and Chrome */
+                }
+
     </style>
-
-    <script>
-
-    </script>
 </head>
 <body style="background-image: url(https://pic3.zhimg.com/v2-8299d5eae2d7c4ac66450baad1a1496a_r.jpg)">
     <block>

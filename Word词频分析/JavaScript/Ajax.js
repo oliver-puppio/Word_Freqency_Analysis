@@ -30,8 +30,6 @@
 
 var myfiles = new Array(5);
 var myfileslength = 0;
-//myfiles = [{ filename: "wode11.doc", uptime: "111", info: "111", result: { 'sds': 1, '344': 8, '333': 6 } }, { filename: "lll.doc", uptime: "www", info: "1344", result: { 'sds': 1, '344': 8, '333': 6 } }]
-//myfileslength = 2;
 
 function create_json(param) {
     var new_j = eval("(" + param + ")");
@@ -74,7 +72,6 @@ function judge_json() {
 
 window.onload = function () {
     judge_json();
-
 }
 
 function init() {
