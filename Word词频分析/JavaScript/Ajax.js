@@ -61,10 +61,10 @@ function delete_json(i) {
 }
 
 function judge_json() {
-    for (var i = 0; i < 5; i++) {
-        document.getElementById(String(i)).querySelector(".title").title = myfiles[i].filename;
+    for (var i = 0; i < 5; i++) {       
         document.getElementById(String(i)).style.display = i < myfileslength ? "block" : "none";
         if (i < myfileslength) {
+            document.getElementById(String(i)).querySelector(".title").title = myfiles[i].filename;
             document.getElementById(String(i)).querySelector(".title").innerText = myfiles[i].filename;
             document.getElementById(String(i)).querySelector(".time").innerText = myfiles[i].uptime;
             document.getElementById(String(i)).querySelector(".info").innerText = myfiles[i].info;
