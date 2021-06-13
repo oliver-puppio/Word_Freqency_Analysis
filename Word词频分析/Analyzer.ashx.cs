@@ -29,7 +29,7 @@ namespace Word词频分析
                     string path = HttpContext.Current.Server.MapPath("~/Library/") + f.FileName;
                     string txt_str = Stringnify_file(path);
                     string ans = WordFrequency(txt_str, f.FileName);
-                    File.WriteAllText(HttpContext.Current.Server.MapPath("~/Library/result.txt"), ans);
+                    //File.WriteAllText(HttpContext.Current.Server.MapPath("~/Library/result.txt"), ans);
                     context.Response.Write(ans);
             }
 
@@ -128,7 +128,7 @@ namespace Word词频分析
             string wnf = "{filename:'" + filename + "',uptime:'" + DateTime.Now.ToString() + "',info:'" + info + "',result:{";
             foreach (KeyValuePair<string, int> kvp in dicSort)
             {
-                wnf += "'"+kvp.Key + "':'" + kvp.Value + "',";
+                wnf += "'" + kvp.Key + "':" + kvp.Value + ",";
             }
             wnf += "}}";
 
